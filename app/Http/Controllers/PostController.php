@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Post;
 use Illuminate\Http\Request;
 
 class PostController extends Controller
@@ -13,7 +14,8 @@ class PostController extends Controller
      */
     public function index()
     {
-        //
+        $posts=Post::all();
+       return view('posts.index',compact('posts'));
     }
 
     /**
@@ -23,7 +25,7 @@ class PostController extends Controller
      */
     public function create()
     {
-        //
+        return view('posts.create');
     }
 
     /**
@@ -34,7 +36,19 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        //
+       // return $request->get('title');
+    //return $request->all();
+
+   Post::create($request->all());
+    return redirect('/post');
+
+//        $input=$request->all();
+//        $input['title']=$request->title;
+//        Post::create($request->all());
+
+//        $post=new Post;
+//        $post->title=$request->title;
+//        $post->save();
     }
 
     /**
@@ -45,7 +59,8 @@ class PostController extends Controller
      */
     public function show($id)
     {
-        //
+        $post=Post::findOrFail($id);
+        return view('posts.show',compact('post'));
     }
 
     /**
@@ -56,7 +71,8 @@ class PostController extends Controller
      */
     public function edit($id)
     {
-        //
+        $post=Post::findOrFail($id);
+        return view('posts.edit',compact('post'));
     }
 
     /**
@@ -68,7 +84,9 @@ class PostController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+       $post=Post::findOrFail($id);
+       $post->update($request->all());
+       return redirect('/post');
     }
 
     /**
@@ -79,6 +97,7 @@ class PostController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $post=Post::whereId($id)->delete();
+       return redirect('/post');
     }
 }
