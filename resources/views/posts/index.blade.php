@@ -5,7 +5,7 @@
     <ul>
       @foreach($posts as $post)
          <li>
-             <a href="{{route('post.show',$post->id)}}">  {{$post->title}}</a>
+             <a href="{{route('post.show',$post->id)}}">{{$post->title}}</a>
 
          </li>
           </ul>
@@ -13,6 +13,5 @@
 @endsection
 
 @section('footer')
-
 
 @endsection

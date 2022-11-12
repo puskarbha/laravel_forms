@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('content')
-    <h1 align="center">show page</h1>
+    <h2 align="center">show page</h2>
 
         {{--    this also works finr--}}
 {{--<h2><a href="/post/{{$post->id}}/edit">{{$post->title}}</a></h2>--}}
