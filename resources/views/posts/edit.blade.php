@@ -2,11 +2,14 @@
 @section('content')
     <h1 align="center">Edit Post</h1>
 
-    {!! Form::open([
-    'method'=>'POST',
-        'action'=> 'PostController@store'
+    {!! Form::model(
+    $post,
+    [
+    'method'=>'PATCH',
+    'action'=> ['PostController@update',$post->id]
 
-    ]) !!}
+    ]
+    ) !!}
 
      {!! Form::label('title','Title:') !!}
      {!! Form::text('title',null,['class'=>'form-control']) !!}
@@ -14,10 +17,18 @@
     {!! Form::submit('update post',['class'=>'btn btn-info']) !!}
 
 
-
-    <form method="post" action="/post/{{$post->id}}">
-        {{csrf_field()}}
-        <input type="hidden" name="_method" value="DELETE">
-        <input type="submit" value="DELETE">
     {!! Form::close() !!}
+
+    {!! Form::open(
+
+   [
+   'method'=>'DELETE',
+   'action'=> ['PostController@destroy',$post->id]
+
+   ]
+   ) !!}
+        {{csrf_field()}}
+
+        {!! Form::submit('Delete Post',['class'=>'btn btn-danger']) !!}
+{!! Form::close() !!}
 @endsection

@@ -20,4 +20,9 @@ Route::get('/', function () {
 //Route::resource('/post','PostController::class');
 
 use App\Http\Controllers\PostController;
-Route::resource('/post', PostController::class);
+
+
+Route::group(['middleware'=>'web'],function(){
+    Route::resource('/post', PostController::class);
+
+});
