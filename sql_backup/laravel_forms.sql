@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 09, 2022 at 06:23 PM
+-- Generation Time: Nov 14, 2022 at 06:23 PM
 -- Server version: 10.4.25-MariaDB
 -- PHP Version: 8.1.10
 
@@ -123,6 +123,19 @@ CREATE TABLE `posts` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `posts`
+--
+
+INSERT INTO `posts` (`id`, `user_id`, `title`, `content`, `created_at`, `updated_at`) VALUES
+(3, 3, 'bekkar', 'timeloss', '2022-11-11 10:26:46', '2022-11-11 10:26:46'),
+(4, 4, 'msg', 'message for long', '2022-11-11 10:28:04', '2022-11-11 10:28:04'),
+(5, 3, 'color', 'color fades', '2022-11-11 10:31:41', '2022-11-11 10:31:41'),
+(6, 5, 'good day', 'Not a biscuit', '2022-11-12 01:51:05', '2022-11-12 01:51:05'),
+(9, 3, 'hamro', 'we are peace lover', '2022-11-12 09:05:22', '2022-11-12 09:05:22'),
+(11, 6, 'dashain', 'daashin is a festival', '2022-11-12 09:22:45', '2022-11-12 09:22:45'),
+(13, 5, 'new title', 'new content', '2022-11-14 06:07:15', '2022-11-14 06:07:15');
 
 -- --------------------------------------------------------
 
@@ -300,7 +313,7 @@ ALTER TABLE `photos`
 -- AUTO_INCREMENT for table `posts`
 --
 ALTER TABLE `posts`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `roles`
