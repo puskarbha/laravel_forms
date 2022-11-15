@@ -53,4 +53,13 @@ class User extends Authenticatable
     public function roles(){
         return $this->belongsToMany('App\Models\Role')->withPivot('created_at');
     }
+
+    public function getNameAttribute($value){
+        return ucfirst($value);
+//        return strtoupper($value);
+    }
+
+    public function setNameAttribute($value){
+        $this->attributes['name']=strtoupper($value);
+    }
 }

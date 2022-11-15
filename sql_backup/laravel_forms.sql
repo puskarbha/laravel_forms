@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 14, 2022 at 06:23 PM
+-- Generation Time: Nov 15, 2022 at 06:51 PM
 -- Server version: 10.4.25-MariaDB
 -- PHP Version: 8.1.10
 
@@ -64,7 +64,8 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (45, '2022_11_09_113948_create_taggables_table', 2),
 (46, '2022_11_09_114836_create_roles_table', 2),
 (47, '2022_11_09_131710_create_photos_table', 2),
-(48, '2022_11_09_132158_create_posts_table', 2);
+(48, '2022_11_09_132158_create_posts_table', 2),
+(49, '2022_11_15_160732_add_path_column_to_posts', 3);
 
 -- --------------------------------------------------------
 
@@ -121,21 +122,25 @@ CREATE TABLE `posts` (
   `title` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `content` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `path` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `posts`
 --
 
-INSERT INTO `posts` (`id`, `user_id`, `title`, `content`, `created_at`, `updated_at`) VALUES
-(3, 3, 'bekkar', 'timeloss', '2022-11-11 10:26:46', '2022-11-11 10:26:46'),
-(4, 4, 'msg', 'message for long', '2022-11-11 10:28:04', '2022-11-11 10:28:04'),
-(5, 3, 'color', 'color fades', '2022-11-11 10:31:41', '2022-11-11 10:31:41'),
-(6, 5, 'good day', 'Not a biscuit', '2022-11-12 01:51:05', '2022-11-12 01:51:05'),
-(9, 3, 'hamro', 'we are peace lover', '2022-11-12 09:05:22', '2022-11-12 09:05:22'),
-(11, 6, 'dashain', 'daashin is a festival', '2022-11-12 09:22:45', '2022-11-12 09:22:45'),
-(13, 5, 'new title', 'new content', '2022-11-14 06:07:15', '2022-11-14 06:07:15');
+INSERT INTO `posts` (`id`, `user_id`, `title`, `content`, `created_at`, `updated_at`, `path`) VALUES
+(3, 3, 'bekkar', 'timeloss', '2022-11-11 10:26:46', '2022-11-11 10:26:46', ''),
+(4, 4, 'msg', 'message for long', '2022-11-11 10:28:04', '2022-11-11 10:28:04', ''),
+(5, 3, 'color', 'color fades', '2022-11-11 10:31:41', '2022-11-11 10:31:41', ''),
+(6, 5, 'good day', 'Not a biscuit', '2022-11-12 01:51:05', '2022-11-12 01:51:05', ''),
+(9, 3, 'hamro', 'we are peace lover', '2022-11-12 09:05:22', '2022-11-12 09:05:22', ''),
+(11, 6, 'dashain', 'daashin is a festival', '2022-11-12 09:22:45', '2022-11-12 09:22:45', ''),
+(13, 5, 'new title', 'new content', '2022-11-14 06:07:15', '2022-11-14 06:07:15', ''),
+(14, 3, 'bishnu', 'He is a saver', '2022-11-15 10:29:16', '2022-11-15 10:29:16', 'hand-painted-watercolor-background-with-sky-clouds-shape.jpg'),
+(16, 4, 'keshav', 'He ia a warrior', '2022-11-15 10:33:21', '2022-11-15 10:33:21', 'Iimgdv.jpeg'),
+(17, 4, 'shyam', 'color of neutrality', '2022-11-15 11:54:23', '2022-11-15 11:54:23', 'Bhim Photo new (1).jpg');
 
 -- --------------------------------------------------------
 
@@ -193,6 +198,16 @@ CREATE TABLE `users` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
+(1, 'GOPAL', 'krishna@gmail.com', NULL, '', 'radha', NULL, '2022-11-15 09:50:50'),
+(2, 'mahadev', 'mahadev@gmail.com', NULL, 'parbati', NULL, NULL, NULL),
+(3, 'basudev', 'basudev@gmail.com', NULL, 'gokul', NULL, NULL, NULL),
+(4, 'kanha', 'kanha@gmail.com', NULL, 'krishnapriya', NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -295,7 +310,7 @@ ALTER TABLE `failed_jobs`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
 
 --
 -- AUTO_INCREMENT for table `personal_access_tokens`
@@ -313,7 +328,7 @@ ALTER TABLE `photos`
 -- AUTO_INCREMENT for table `posts`
 --
 ALTER TABLE `posts`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT for table `roles`
@@ -337,7 +352,7 @@ ALTER TABLE `tags`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `videos`

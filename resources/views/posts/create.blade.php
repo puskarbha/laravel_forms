@@ -7,7 +7,8 @@
 
     {!! Form::open([
     'method'=>'POST',
-        'action'=> 'PostController@store'
+        'action'=> 'PostController@store',
+        'files'=>true
 
     ]) !!}
 
@@ -23,13 +24,15 @@
         <td>{!! Form::label('content','Content:') !!}</td>
         <td>{!! Form::text('content',null,['class'=>'form-control']) !!}</td>
 </tr>
+            <tr>
+                <td>  {!! Form::label('user_id','User ID:') !!}</td>
+                <td> {!! Form::text('user_id',null,['class'=>'form-control']) !!}</td>
+            </tr>
 
-        <tr>
-            <td>  {!! Form::label('user_id','User ID:') !!}</td>
-            <td> {!! Form::text('user_id',null,['class'=>'form-control']) !!}</td>
-        </tr>
-
-
+            <tr>
+                <td></td>
+                <td>{!! Form::file('file',null,['class'=>'form-control']) !!}</td>
+            </tr>
       <tr>
           <td colspan="2" >{!! Form::submit('create Post',['class'=>'btn btn-primary']) !!}</td>
       </tr>

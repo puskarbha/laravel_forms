@@ -37,6 +37,15 @@ class PostController extends Controller
      */
     public function store(CreatePostRequest $request)
     {
+       $input=$request->all();
+       if($file=$request->file('file')){
+           $name=$file->getClientOriginalName();
+           $file->move('images',$name);
+           $input['path']=$name;
+
+       }
+       Post::create($input);
+//       return $request->file('file');
        // return $request->get('title');
     //return $request->all();
 //        $this->validate($request,[
@@ -44,7 +53,7 @@ class PostController extends Controller
 //                'content'=>'required'
 //            ]
 //        );
-   Post::create($request->all());
+   //Post::create($request->all());
     return redirect('/post');
 
 //        $input=$request->all();
